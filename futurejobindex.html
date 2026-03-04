@@ -1,284 +1,176 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <head>
-  <meta charset="UTF-8">                  <!-- Already there -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Already there -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- Add the Google verification meta tag BELOW -->
+  <!-- Google verification meta tag -->
   <meta name="google-site-verification" content="YOUR_CODE_HERE" />
   
-  <title>Future Careers Portal</title>    <!-- Already there -->
+  <title>Future Careers Portal</title>
   
-  <!-- You can also have CSS/JS links below -->
-</head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Future Careers – PRO ULTRA</title>
-<style>
-body{margin:0;font-family:Arial, sans-serif;scroll-behavior:smooth;background:#0f172a;color:white;overflow-x:hidden;transition:0.5s;}
-.light{background:white;color:black;}
-nav{position:fixed;top:0;width:100%;background:rgba(0,0,0,0.85);padding:10px;text-align:center;z-index:1000;}
-nav a{color:#00ffff;margin:6px;text-decoration:none;font-size:14px;}
-nav a.active{color:#ff0;}
-.toggle{position:fixed;right:20px;top:60px;padding:8px 15px;background:#00ffff;border:none;cursor:pointer;z-index:1001;}
-.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;}
-.hero h1{font-size:40px;text-shadow:0 0 15px #00ffff;max-width:900px;}
-.hero p{font-size:22px;max-width:800px;}
-section{min-height:100vh;padding:80px 40px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;opacity:0;transform:translateY(40px);transition:1s;}
-section.show{opacity:1;transform:translateY(0);}
-h1{font-size:36px;margin-bottom:20px;text-shadow:0 0 10px #00ffff;}
-p{max-width:900px;font-size:20px;}
-.card{background:rgba(255,255,255,0.1);padding:20px;margin:20px;border-radius:15px;transition:0.4s;cursor:pointer;box-shadow:0 0 10px #00ffff;position:relative;}
-.card:hover{transform:scale(1.05);box-shadow:0 0 25px #00ffff;}
-.popup{display:none;position:absolute;top:0;left:105%;background:rgba(0,255,255,0.1);padding:10px;border-radius:10px;width:250px;text-align:left;z-index:10;}
-.card:hover .popup{display:block;}
-.filter-btns{text-align:center;margin:20px;}
-.filter-btns button{padding:8px 15px;margin:5px;cursor:pointer;border:none;background:#00ffff;color:black;font-weight:bold;border-radius:5px;}
-footer{text-align:center;padding:40px;background:black;}
-button{padding:10px 20px;border:none;background:#00ffff;cursor:pointer;font-weight:bold;margin-top:10px;}
-#particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
-</style>
+  <!-- Basic CSS for headings and text -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f8ff;
+      color: #333;
+    }
+    section {
+      padding: 50px;
+      border-bottom: 2px solid #ddd;
+    }
+    h1 {
+      font-size: 32px;
+      color: #1e90ff;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 18px;
+      max-width: 800px;
+    }
+    a.button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #1e90ff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    a.button:hover {
+      background-color: #104e8b;
+    }
+  </style>
 </head>
 <body>
 
-<canvas id="particles"></canvas>
-
-<nav id="navbar">
-<a href="#hero" class="active">Home</a>
-<a href="#careers">Careers</a>
-<a href="#calculator">Salary Calc</a>
-<a href="#pdf">Download PDF</a>
-<a href="#contact">Contact</a>
-</nav>
-
-<button class="toggle" onclick="toggleMode()">Toggle Mode</button>
-
-<div class="hero" id="hero">
-<h1 id="typingHero"></h1>
-<p>Discover top future careers, interactive insights, and salary estimates. Filter by category to find the perfect path for you!</p>
-</div>
-
-<div class="filter-btns">
-<button onclick="filterCards('all')">All</button>
-<button onclick="filterCards('Tech')">Tech</button>
-<button onclick="filterCards('Science')">Science</button>
-<button onclick="filterCards('Business')">Business</button>
-</div>
-
-<section id="careers">
-<!-- CARD TEMPLATE -->
-<div class="card" data-category="Tech" data-intro="AI is transforming industries worldwide!">
-<h1>Artificial Intelligence</h1>
-<p>Machine Learning Engineer, AI Researcher, Robotics Specialist, Automation Developer. High demand, top salaries, global opportunities.</p>
-<div class="popup">Skills: Python, Math, Statistics, Machine Learning frameworks. Industries: Healthcare, Finance, Transportation.</div>
-</div>
-
-<div class="card" data-category="Tech" data-intro="Protect digital systems from cyber threats!">
-<h1>Cybersecurity</h1>
-<p>Ethical Hacker, Security Analyst, Network Defender, Digital Forensics. Ensures privacy and safety in a digital world.</p>
-<div class="popup">Skills: Networking, Pen Testing, Security Protocols. Industries: Corporate, Government, Defense.</div>
-</div>
-
-<div class="card" data-category="Tech" data-intro="Build software to change the world!">
-<h1>Software Development</h1>
-<p>Web Developer, Mobile App Developer, Full Stack, System Architect. Creative problem solving, high demand globally.</p>
-<div class="popup">Skills: Programming, Frameworks, Databases. Industries: Startups, Tech Giants, Freelance.</div>
-</div>
-
-<div class="card" data-category="Tech" data-intro="Turn data into decisions!">
-<h1>Data Science</h1>
-<p>Data Scientist, Analyst, BI Specialist. Analyze data for strategic decision-making and predictive insights.</p>
-<div class="popup">Skills: Python, R, SQL, Analytics. Industries: Finance, Healthcare, Marketing.</div>
-</div>
-
-<div class="card" data-category="Tech" data-intro="Design intelligent robots for the future!">
-<h1>Robotics Engineering</h1>
-<p>Robotics Engineer, Automation Designer, Control Specialist. Integrates mechanical, electronics, and AI solutions.</p>
-<div class="popup">Skills: Mechanical Design, Programming, Electronics. Industries: Manufacturing, Healthcare, Defense.</div>
-</div>
-
-<div class="card" data-category="Tech" data-intro="Manage cloud systems globally!">
-<h1>Cloud Computing</h1>
-<p>Cloud Engineer, DevOps, Infrastructure Architect. Scalable, secure systems for enterprises worldwide.</p>
-<div class="popup">Skills: AWS, Azure, Linux, Security. Industries: Tech Giants, Startups.</div>
-</div>
-
-<div class="card" data-category="Tech" data-intro="Create amazing games and virtual worlds!">
-<h1>Game Development</h1>
-<p>Game Developer, Designer, Animator. Mobile, console, VR/AR gaming opportunities worldwide.</p>
-<div class="popup">Skills: Unity, Unreal, Animation, Storytelling. Industries: Gaming, Edutainment.</div>
-</div>
-
-<div class="card" data-category="Science" data-intro="Innovate in defense technologies!">
-<h1>Defense Technology</h1>
-<p>Cybersecurity Specialist, Aerospace Engineer, Strategic Software Developer. Secure communications and drones.</p>
-<div class="popup">Skills: Cybersecurity, Software Dev, Engineering. Industries: Government, Defense Contractors.</div>
-</div>
-
-<div class="card" data-category="Science" data-intro="Explore the final frontier!">
-<h1>Space Technology</h1>
-<p>Aerospace Engineer, Satellite Developer, Mission Planner. Contribute to space exploration and communication.</p>
-<div class="popup">Skills: Aerospace, Robotics, Physics. Industries: Space Agencies, Private Space Companies.</div>
-</div>
-
-<div class="card" data-category="Science" data-intro="Make energy sustainable!">
-<h1>Renewable Energy</h1>
-<p>Solar Engineer, Wind Analyst, Sustainability Consultant. Develop clean energy solutions globally.</p>
-<div class="popup">Skills: Energy Tech, Engineering, Sustainability. Industries: Energy, Environment.</div>
-</div>
-
-<div class="card" data-category="Tech" data-intro="Blockchain is revolutionizing transactions!">
-<h1>Blockchain Technology</h1>
-<p>Developer, Smart Contract Engineer, Security Specialist. Decentralized apps and secure transactions.</p>
-<div class="popup">Skills: Solidity, Security, Crypto. Industries: Finance, Supply Chain, Governance.</div>
-</div>
-
-<div class="card" data-category="Business" data-intro="Design experiences people love!">
-<h1>UI/UX Design</h1>
-<p>Designer, Interaction Specialist. Create intuitive digital interfaces and user experiences.</p>
-<div class="popup">Skills: Design, Psychology, Prototyping. Industries: Apps, Websites, Products.</div>
-</div>
-
-<div class="card" data-category="Business" data-intro="Grow brands digitally!">
-<h1>Digital Marketing</h1>
-<p>SEO Specialist, Content Strategist, Social Media Manager. Strategy and analytics for online growth.</p>
-<div class="popup">Skills: Marketing, Analytics, Content. Industries: E-commerce, Agencies, Startups.</div>
-</div>
-
-<div class="card" data-category="Science" data-intro="Biotech innovations for a better world!">
-<h1>Biotechnology</h1>
-<p>Genetic Engineer, Biochemist, Medical Researcher. Solve real-world medical and agricultural problems.</p>
-<div class="popup">Skills: Biology, Lab Techniques, Analysis. Industries: Pharma, Agriculture, Healthcare.</div>
-</div>
-
-<div class="card" data-category="Business" data-intro="Finance meets tech!">
-<h1>Financial Technology</h1>
-<p>Payment System Developer, Data Analyst, Digital Banking Specialist. Innovate in digital finance solutions.</p>
-<div class="popup">Skills: Finance, Programming, Analytics. Industries: Banks, FinTech Companies.</div>
-</div>
-
+<!-- Page 1 -->
+<section id="page1">
+  <h1>Introduction to Future Careers</h1>
+  <p>Future careers are evolving rapidly with technology and globalization. The jobs that will be most in demand in the next decade include roles in AI, cybersecurity, renewable energy, biotechnology, and more. Preparing early with the right skills will help you succeed in these opportunities.</p>
 </section>
 
-<section id="calculator">
-<h1>Salary Estimation Calculator</h1>
-<label>Career Type:</label><br>
-<input type="text" id="careerInput" placeholder="e.g., AI"><br>
-<label>Experience (Years):</label><br>
-<input type="number" id="expInput" placeholder="0"><br>
-<button onclick="calculateSalary()">Estimate Salary</button>
-<p id="salaryResult"></p>
+<!-- Page 2 -->
+<section id="page2">
+  <h1>Artificial Intelligence Specialist</h1>
+  <p>AI specialists design intelligent systems and algorithms that can learn and adapt. They work in areas such as robotics, natural language processing, and predictive analytics. This career requires strong programming skills, mathematics, and a passion for solving complex problems.</p>
 </section>
 
-<section id="pdf">
-<h1>Download Career PDF</h1>
-<button onclick="downloadPDF()">Download PDF</button>
+<!-- Page 3 -->
+<section id="page3">
+  <h1>Cybersecurity Expert</h1>
+  <p>Cybersecurity experts protect digital information from hackers and cyber threats. They implement security protocols, monitor networks, and respond to breaches. With digitalization increasing, the demand for cybersecurity professionals is skyrocketing, making it a highly valuable career path.</p>
 </section>
 
-<section id="contact">
-<h1>Contact Us</h1>
-<input type="text" placeholder="Your Name"><br>
-<input type="email" placeholder="Your Email"><br>
-<textarea placeholder="Your Message"></textarea><br>
-<button>Send Message</button>
+<!-- Page 4 -->
+<section id="page4">
+  <h1>Data Scientist</h1>
+  <p>Data scientists analyze large volumes of data to extract insights and support decision-making. They use statistical models, machine learning, and visualization tools. This career combines programming, statistics, and domain knowledge, and is crucial in almost every industry.</p>
 </section>
 
-<footer>
-<p>© 2026 Future Careers | Designed by Rishabh</p>
-</footer>
+<!-- Page 5 -->
+<section id="page5">
+  <h1>Renewable Energy Engineer</h1>
+  <p>Renewable energy engineers design and implement solutions for sustainable energy sources such as solar, wind, and hydroelectric power. They work on technology that reduces environmental impact and improves energy efficiency. This field is growing rapidly as the world moves toward green energy.</p>
+</section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script>
-// Typing Hero
-const heroText="Explore 15+ High Demand Future Careers!";
-let i=0;
-function typeHero(){if(i<heroText.length){document.getElementById("typingHero").innerHTML+=heroText.charAt(i);i++;setTimeout(typeHero,50);}}
-typeHero();
+<!-- Page 6 -->
+<section id="page6">
+  <h1>Biotechnology Specialist</h1>
+  <p>Biotech specialists apply biology and technology to develop medicines, improve agriculture, and create bio-based products. Careers in biotechnology require knowledge of genetics, molecular biology, and laboratory techniques. This field has enormous potential for innovation and improving human life.</p>
+</section>
 
-// Dark/Light Mode
-function toggleMode(){document.body.classList.toggle("light");}
+<!-- Page 7 -->
+<section id="page7">
+  <h1>Robotics Engineer</h1>
+  <p>Robotics engineers design, build, and program robots for various applications, from manufacturing to healthcare. They integrate mechanics, electronics, and software to create intelligent machines. Robotics is a futuristic field with growing opportunities in automation and AI integration.</p>
+</section>
 
-// Scroll Reveal
-const sections=document.querySelectorAll("section");
-window.addEventListener("scroll",()=>{
-sections.forEach(sec=>{const top=sec.getBoundingClientRect().top;if(top<window.innerHeight-100){sec.classList.add("show");}});
-});
+<!-- Page 8 -->
+<section id="page8">
+  <h1>Cloud Computing Specialist</h1>
+  <p>Cloud specialists manage cloud infrastructure, deploy applications, and ensure data accessibility and security. Skills in AWS, Azure, or Google Cloud are valuable. Cloud computing supports remote services, big data, and AI applications, making this career highly relevant for the future.</p>
+</section>
 
-// Navbar active
-const navLinks=document.querySelectorAll("nav a");
-window.addEventListener("scroll",()=>{
-let fromTop=window.scrollY+70;
-navLinks.forEach(link=>{
-let section=document.querySelector(link.getAttribute("href"));
-if(section.offsetTop<=fromTop && section.offsetTop+section.offsetHeight>fromTop){
-navLinks.forEach(l=>l.classList.remove("active"));
-link.classList.add("active");
-}
-});
-});
+<!-- Page 9 -->
+<section id="page9">
+  <h1>Game Developer</h1>
+  <p>Game developers design and create interactive games for consoles, computers, and mobile devices. They work with graphics, AI, and programming languages to build immersive experiences. With the gaming industry booming, skilled developers are highly sought after globally.</p>
+</section>
 
-// Salary Calculator
-function calculateSalary(){
-let career=document.getElementById("careerInput").value.toLowerCase();
-let exp=Number(document.getElementById("expInput").value);
-let salary=0;
-if(career=="ai") salary=800000+exp*100000;
-else if(career=="cyber") salary=600000+exp*80000;
-else if(career=="software") salary=500000+exp*60000;
-else if(career=="data") salary=550000+exp*70000;
-else if(career=="robotics") salary=700000+exp*90000;
-else salary=300000+exp*30000;
-document.getElementById("salaryResult").innerText="Estimated Salary: ₹"+salary;
-}
+<!-- Page 10 -->
+<section id="page10">
+  <h1>Virtual Reality Designer</h1>
+  <p>VR designers create immersive digital environments for gaming, education, or training. They work with 3D modeling, animation, and VR platforms. As VR technology becomes mainstream, designers skilled in creating realistic and interactive experiences will be in demand.</p>
+</section>
 
-// PDF Download
-function downloadPDF(){
-const { jsPDF }=window.jspdf;
-let doc=new jsPDF();
-let cards=document.querySelectorAll(".card h1,.card p");
-let y=10;
-cards.forEach(el=>{
-let lines=doc.splitTextToSize(el.innerText,180);
-doc.text(lines,10,y);
-y+=lines.length*8+5;
-});
-doc.save("Future_Careers.pdf");
-}
+<!-- Page 11 -->
+<section id="page11">
+  <h1>Digital Marketing Expert</h1>
+  <p>Digital marketing experts use online platforms to promote products and services. They work with SEO, social media, and analytics to reach target audiences. With more businesses moving online, this career offers excellent opportunities for creative and strategic thinkers.</p>
+</section>
 
-// Particle Background
-const canvas=document.getElementById("particles");
-const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-let particlesArray=[];
-class Particle{constructor(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.size=Math.random()*2+1;this.speedX=Math.random()*1-0.5;this.speedY=Math.random()*1-0.5;}
-update(){this.x+=this.speedX;this.y+=this.speedY;if(this.x>canvas.width)this.x=0;if(this.x<0)this.x=canvas.width;if(this.y>canvas.height)this.y=0;if(this.y<0)this.y=canvas.height;}
-draw(){ctx.fillStyle="#00ffff";ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill();}}
-function init(){for(let i=0;i<150;i++){particlesArray.push(new Particle());}}
-init();
-function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particlesArray.forEach(p=>{p.update();p.draw();});requestAnimationFrame(animate);}
-animate();
+<!-- Page 12 -->
+<section id="page12">
+  <h1>Blockchain Developer</h1>
+  <p>Blockchain developers build decentralized applications and smart contracts. They work in finance, supply chain, and security. Knowledge of cryptocurrencies and blockchain platforms is essential. This field is growing rapidly as organizations seek secure, transparent digital systems.</p>
+</section>
 
-// Category Filter
-function filterCards(cat){
-let cards=document.querySelectorAll(".card");
-cards.forEach(c=>{
-if(cat=="all" || c.dataset.category==cat){c.style.display="block";}else{c.style.display="none";}
-});
-}
+<!-- Page 13 -->
+<section id="page13">
+  <h1>Space Technology Engineer</h1>
+  <p>Space engineers work on satellite systems, rockets, and space exploration projects. Careers in this field require physics, engineering, and problem-solving skills. The growing interest in private space missions makes this an exciting futuristic career option.</p>
+</section>
 
-// Typing animation for cards
-const cardElements=document.querySelectorAll(".card");
-cardElements.forEach(card=>{
-let introText=card.dataset.intro;
-let introP=document.createElement("p");
-introP.style.fontWeight="bold";
-introP.style.color="#00ffff";
-card.insertBefore(introP,card.children[1]);
-let idx=0;
-function typeCard(){if(idx<introText.length){introP.innerHTML+=introText.charAt(idx);idx++;setTimeout(typeCard,40);}}
-typeCard();
-});
-</script>
+<!-- Page 14 -->
+<section id="page14">
+  <h1>Healthcare Analyst</h1>
+  <p>Healthcare analysts use data to improve medical services and patient outcomes. They work with hospitals, insurance companies, and research institutions. This career combines healthcare knowledge with data analysis to drive better decisions in the health sector.</p>
+</section>
+
+<!-- Page 15 -->
+<section id="page15">
+  <h1>Environmental Scientist</h1>
+  <p>Environmental scientists study ecosystems and work on sustainability projects. They research climate change, pollution, and conservation methods. As environmental awareness grows, this career becomes more critical for creating sustainable solutions for the future.</p>
+</section>
+
+<!-- Page 16 -->
+<section id="page16">
+  <h1>AI Ethics Specialist</h1>
+  <p>AI ethics specialists ensure artificial intelligence systems are used responsibly and fairly. They address bias, privacy, and moral implications of AI. With AI becoming pervasive, ethical oversight is a vital career path for tech professionals.</p>
+</section>
+
+<!-- Page 17 -->
+<section id="page17">
+  <h1>IoT Engineer</h1>
+  <p>IoT engineers design connected devices that communicate over the internet. They integrate sensors, software, and networks to create smart systems for homes, cities, and industries. IoT is expanding rapidly, providing numerous future job opportunities.</p>
+</section>
+
+<!-- Page 18 -->
+<section id="page18">
+  <h1>Financial Analyst</h1>
+  <p>Financial analysts study market trends, evaluate investments, and help companies make financial decisions. With knowledge of technology and analytics, this career will evolve with fintech innovations and automated trading platforms.</p>
+</section>
+
+<!-- Page 19 -->
+<section id="page19">
+  <h1>Content Creator</h1>
+  <p>Content creators develop blogs, videos, and social media content for brands and audiences. Creativity, communication, and digital tools are key. This career is booming with online platforms, and skilled creators have global opportunities.</p>
+</section>
+
+<!-- Page 20 -->
+<section id="page20">
+  <h1>Conclusion and Career Tips</h1>
+  <p>The future job market is dynamic and technology-driven. To succeed, focus on developing technical skills, creativity, and adaptability. Explore multiple career paths, gain practical experience, and keep learning. With preparation, you can thrive in any of these emerging fields.</p>
+
+  <!-- Example PDF download link -->
+  <a href="CareerGuide.pdf" class="button" target="_blank">Download Career Guide PDF</a>
+</section>
 
 </body>
 </html>
